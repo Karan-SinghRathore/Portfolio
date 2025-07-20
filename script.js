@@ -1,13 +1,11 @@
-// Creative Portfolio Interactive JavaScript
 
-// EmailJS Configuration - UPDATE THESE VALUES AFTER SETUP!
 const EMAILJS_CONFIG = {
-    serviceID: 'YOUR_SERVICE_ID',
-    templateID: 'YOUR_TEMPLATE_ID', 
-    publicKey: 'YOUR_PUBLIC_KEY'
+    serviceID: 'service_sdapz6n',
+    templateID: 'template_1lmo93i', 
+    publicKey: '1erorYLREvOzjM3Qz'
 };
 
-// Typing Animation
+
 class TypeWriter {
     constructor(element, words, wait = 2000) {
         this.element = element;
@@ -50,7 +48,7 @@ class TypeWriter {
     }
 }
 
-// Initialize typing animation
+
 document.addEventListener('DOMContentLoaded', function() {
     const typingElement = document.getElementById('typing-role');
     if (typingElement) {
@@ -59,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Parallax Effect
+
 function initParallax() {
     let ticking = false;
 
@@ -67,14 +65,12 @@ function initParallax() {
         const scrolled = window.pageYOffset;
         const rate = scrolled * -0.5;
 
-        // Parallax layers
         document.querySelectorAll('.parallax-layer').forEach((layer, index) => {
             const speed = layer.dataset.speed || 0.5;
             const yPos = scrolled * speed;
             layer.style.transform = `translate3d(0, ${yPos}px, 0)`;
         });
 
-        // Floating elements
         document.querySelectorAll('.element').forEach((element, index) => {
             const speed = 0.1 + (index * 0.02);
             const yPos = scrolled * speed;
@@ -93,7 +89,7 @@ function initParallax() {
     });
 }
 
-// Smooth Scrolling
+
 function initSmoothScrolling() {
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -112,7 +108,6 @@ function initSmoothScrolling() {
     });
 }
 
-// Active Navigation
 function initActiveNav() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
@@ -136,7 +131,6 @@ function initActiveNav() {
     });
 }
 
-// Intersection Observer for Animations
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -161,7 +155,7 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Observe sections and elements
+    
     document.querySelectorAll('section:not(.hero-section)').forEach(section => {
         section.style.opacity = '0';
         section.style.transform = 'translateY(30px)';
@@ -169,21 +163,21 @@ function initScrollAnimations() {
         observer.observe(section);
     });
 
-    // Observe skill tags
+  
     document.querySelectorAll('.skill-tag').forEach(tag => {
         tag.style.opacity = '0';
         tag.style.transform = 'translateY(20px)';
         tag.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
     });
 
-    // Observe project cards
+    
     document.querySelectorAll('.project-card').forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
         card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     });
 
-    // Observe contact items
+  
     document.querySelectorAll('.contact-item').forEach(item => {
         item.style.opacity = '0';
         item.style.transform = 'translateX(-30px)';
@@ -191,7 +185,6 @@ function initScrollAnimations() {
     });
 }
 
-// Notification System
 function showNotification(message, type) {
     const notification = document.createElement('div');
     notification.innerHTML = `
@@ -262,11 +255,11 @@ function initFormHandling() {
             const submitBtn = form.querySelector('.submit-btn');
             const originalText = submitBtn.querySelector('span').textContent;
             
-            // Loading state
+           
             submitBtn.querySelector('span').textContent = 'Sending...';
             submitBtn.disabled = true;
             
-            // Check if EmailJS is configured
+            
             if (EMAILJS_CONFIG.serviceID === 'YOUR_SERVICE_ID') {
                 submitBtn.querySelector('span').textContent = 'Setup Required';
                 showNotification('⚠️ EmailJS not configured yet. Check console for setup instructions.', 'warning');
@@ -295,13 +288,12 @@ After setup, your contact form will send emails directly to ksinghrathore674@gma
                 }, 4000);
                 return;
             }
-            
-            // Initialize EmailJS if configured
+          
             if (typeof emailjs !== 'undefined') {
                 emailjs.init(EMAILJS_CONFIG.publicKey);
             }
             
-            // Get form data
+           
             const formData = {
                 from_name: form.from_name.value,
                 from_email: form.from_email.value,
@@ -309,7 +301,7 @@ After setup, your contact form will send emails directly to ksinghrathore674@gma
                 to_email: 'ksinghrathore674@gmail.com'
             };
             
-            // Send email using EmailJS
+          
             emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.templateID, formData)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
@@ -336,7 +328,6 @@ After setup, your contact form will send emails directly to ksinghrathore674@gma
     }
 }
 
-// Mouse Cursor Effect
 function initCursorEffect() {
     const cursor = document.createElement('div');
     cursor.className = 'custom-cursor';
@@ -359,7 +350,6 @@ function initCursorEffect() {
         }, { duration: 500, fill: 'forwards' });
     });
 
-    // Add cursor styles
     const cursorStyles = `
         .custom-cursor {
             pointer-events: none;
@@ -401,7 +391,6 @@ function initCursorEffect() {
     document.head.appendChild(styleSheet);
 }
 
-// Mobile Navigation
 function initMobileNav() {
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
@@ -414,7 +403,6 @@ function initMobileNav() {
     }
 }
 
-// Navbar Scroll Effect
 function initNavbarScroll() {
     const navbar = document.querySelector('.navbar');
     
@@ -429,7 +417,6 @@ function initNavbarScroll() {
     });
 }
 
-// Skill Tags Hover Effect
 function initSkillTagsEffect() {
     document.querySelectorAll('.skill-tag').forEach(tag => {
         tag.addEventListener('mouseenter', function() {
@@ -445,8 +432,6 @@ function initSkillTagsEffect() {
         });
     });
 }
-
-// Button Ripple Effect
 function initButtonRipple() {
     document.querySelectorAll('.btn-primary, .btn-secondary, .submit-btn').forEach(button => {
         button.addEventListener('click', function(e) {
@@ -478,8 +463,7 @@ function initButtonRipple() {
             }, 600);
         });
     });
-    
-    // Add ripple animation
+
     const rippleStyles = `
         @keyframes ripple {
             to {
@@ -494,7 +478,6 @@ function initButtonRipple() {
     document.head.appendChild(styleSheet);
 }
 
-// Initialize all functions
 document.addEventListener('DOMContentLoaded', function() {
     initParallax();
     initSmoothScrolling();
@@ -505,14 +488,12 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavbarScroll();
     initSkillTagsEffect();
     initButtonRipple();
-    
-    // Initialize cursor effect only on desktop
+
     if (window.innerWidth > 768) {
         initCursorEffect();
     }
 });
 
-// Performance optimization
 let resizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
