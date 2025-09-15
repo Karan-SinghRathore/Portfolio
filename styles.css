@@ -689,10 +689,8 @@ body {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
-    height: 600px;
 }
 
 .project-card {
@@ -705,9 +703,6 @@ body {
     flex-direction: column;
 }
 
-.project-card.featured {
-    grid-row: 1 / 3;
-}
 
 .project-card:hover {
     transform: translateY(-10px);
@@ -723,10 +718,6 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
-}
-
-.project-card.featured .project-image {
-    height: 300px;
 }
 
 .project-placeholder {
@@ -1056,12 +1047,6 @@ body {
     
     .projects-grid {
         grid-template-columns: 1fr;
-        grid-template-rows: auto;
-        height: auto;
-    }
-    
-    .project-card.featured {
-        grid-row: auto;
     }
     
     .social-dock {
